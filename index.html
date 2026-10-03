@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Taddi Pavani | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F2F6F8;--card:#FFFFFF;--ink:#0F2A3D;--mute:#4D6475;--sea:#0E7C86;--sun:#F2A93B;--line:#D3DEE5;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1A24;--card:#122836;--ink:#E8F1F5;--mute:#9DB4C2;--sea:#4FC3CC;--sun:#F2B24F;--line:#24404F}}
+:root[data-theme="dark"]{--bg:#0B1A24;--card:#122836;--ink:#E8F1F5;--mute:#9DB4C2;--sea:#4FC3CC;--sun:#F2B24F;--line:#24404F}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0}
+a{color:var(--sea)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+nav{display:flex;gap:18px;flex-wrap:wrap;justify-content:flex-end;padding:18px 0;font-size:15px}
+nav a{color:var(--mute);text-decoration:none}nav a:hover{color:var(--ink)}
+.hero{padding:56px 0 64px}
+.hero h1{font-weight:800;font-size:clamp(46px,11vw,112px);letter-spacing:-.03em}
+.hero p.role{font-size:clamp(19px,3vw,24px);color:var(--mute);max-width:34ch;margin:18px 0 26px}
+.wave{display:block;width:100%;max-width:520px;height:22px;margin-top:6px}
+.wave path{stroke:var(--sun);stroke-width:4;fill:none;stroke-linecap:round;stroke-dasharray:700;stroke-dashoffset:700;animation:draw 1.6s .2s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.wave path{animation:none;stroke-dashoffset:0}html{scroll-behavior:auto}}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:500;text-decoration:none;background:var(--ink);color:var(--bg)}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+section{padding:56px 0;border-top:1px solid var(--line)}
+section>.wrap>h2{font-size:clamp(28px,5vw,40px);margin-bottom:26px}
+.about{max-width:62ch}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.card h3{font-size:21px;margin-bottom:8px}
+.card p{margin:0 0 12px;color:var(--mute);font-size:16px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.tags li{font-size:14px;padding:3px 11px;border-radius:999px;background:var(--bg);border:1px solid var(--line)}
+.skills .card h3{font-size:18px}
+.tl{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--sea)}
+.tl li{position:relative;padding:0 0 30px 6px}
+.tl li::before{content:"";position:absolute;left:-30px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--sun);border:2px solid var(--bg)}
+.tl h3{font-size:21px}.tl .when{color:var(--mute);font-size:15px;margin:2px 0 8px}.tl p{margin:0;max-width:62ch}
+.contact p{max-width:52ch;color:var(--mute)}
+footer{padding:28px 0 40px;color:var(--mute);font-size:14px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <nav aria-label="Main"><a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Internships</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
+</header>
+<main>
+<div class="wrap hero">
+  <h1 id="name"></h1>
+  <svg class="wave" viewBox="0 0 520 22" aria-hidden="true"><path d="M4 12 C 40 -2, 70 24, 108 12 S 176 -2, 214 12 S 282 24, 320 12 S 388 -2, 426 12 S 484 22, 516 12"/></svg>
+  <p class="role" id="role"></p>
+  <div class="btns"><a class="btn" href="#projects">See my projects</a><a class="btn alt" id="resume" href="#contact">Get in touch</a></div>
+</div>
+
+<section id="about"><div class="wrap"><h2>About</h2><div class="about" id="about-text"></div></div></section>
+<section id="skills" class="skills"><div class="wrap"><h2>Skills</h2><div class="grid" id="skills-grid"></div></div></section>
+<section id="experience"><div class="wrap"><h2>Internships</h2><ul class="tl" id="exp"></ul></div></section>
+<section id="projects"><div class="wrap"><h2>Projects</h2><div class="grid" id="proj"></div></div></section>
+<section id="achievements"><div class="wrap"><h2>Hackathons and learning</h2><div class="grid" id="ach"></div></div></section>
+<section id="contact" class="contact"><div class="wrap"><h2>Contact</h2><p id="contact-text"></p><div class="btns" id="links"></div></div></section>
+</main>
+<footer><div class="wrap" id="foot"></div></footer>
+
+<script>
+/* ===== EDIT YOUR DETAILS HERE ===== */
+const ME = {
+  name: "Taddi Pavani",
+  role: "Final-year CSE (AI & Data Science) student building data, cloud and full-stack projects.",
+  about: [
+    "I'm a B.Tech student at SITAM, Vizianagaram, studying Computer Science and Engineering with a focus on AI and Data Science.",
+    "I like turning ideas into working products: I've built a full-stack mock interview platform, an IoT detection system and a voice translator. I'm looking for Data Engineer, Full-Stack, Cloud or Data Analyst opportunities."
+  ],
+  skills: {
+    "Languages": ["Python","JavaScript","C","SQL"],
+    "Web": ["HTML","CSS","JavaScript"],
+    "Cloud and testing": ["AWS","Playwright"]
+  },
+  experience: [
+    {title:"Summer Intern, Gvpatshala (Visakhapatnam)", when:"May – Jun 2026", text:"Built an AI-driven mock interview web platform: full-stack app deployed on AWS, with a Playwright automation test suite."},
+    {title:"AI Intern, iSTUDIO", when:"May – Sep 2025", text:"Worked on AI projects as an intern. Add your tools and results here."}
+  ],
+  projects: [
+    {title:"Live project 1", text:"Deployed and running online. Open it to see it in action.", tags:["Live"], link:"https://lnkd.in/deWiPY3f"},
+    {title:"Live project 2", text:"Deployed and running online. Open it to see it in action.", tags:["Live"], link:"https://lnkd.in/daitpdts"},
+    {title:"Live project 3 (AWS)", text:"Hosted on an AWS server. Open it to see it in action.", tags:["Live","AWS"], link:"http://3.6.243.214"},
+    {title:"AI Mock Interview Platform", text:"Full-stack web platform that runs AI-driven mock interviews. Deployed on AWS and covered by Playwright tests.", tags:["Python","JavaScript","AWS","Playwright"], link:""},
+    {title:"IoT Monkey Detection System", text:"Academic project that detects monkeys using IoT hardware so people can be alerted early.", tags:["IoT","Python"], link:""},
+    {title:"Python Voice Translator", text:"Listens to speech, translates it and speaks the result aloud.", tags:["Python","Speech recognition","gTTS","Pygame"], link:""}
+  ],
+  achievements: [
+    {title:"Smart India Hackathon (SIH)", text:"Took part and worked with a team on a real problem statement."},
+    {title:"Pytech Arena Hackathon, JNTU-GV", text:"Took part in the Python-focused hackathon."},
+    {title:"Naandhi Foundation workshop", text:"Attended a workshop on employability skills."}
+  ],
+  contact: "Open to internships and entry-level roles. The fastest way to reach me is by email.",
+  email: "pavanitaddi153@gmail.com",
+  links: [
+    {label:"LinkedIn", href:"https://www.linkedin.com/in/pavani-taddi-0071a63a4"},
+    {label:"GitHub", href:"https://github.com/pavanitaddi"}
+  ],
+  resumeLink: ""
+};
+/* ===== END OF EDITABLE PART ===== */
+
+const $ = id => document.getElementById(id);
+const el = (t, c, h) => { const e = document.createElement(t); if (c) e.className = c; if (h !== undefined) e.textContent = h; return e; };
+const tags = list => { const u = el("ul","tags"); list.forEach(t => u.append(el("li","",t))); return u; };
+
+$("name").textContent = ME.name;
+$("role").textContent = ME.role;
+if (ME.resumeLink) { const r = $("resume"); r.href = ME.resumeLink; r.textContent = "View resume"; }
+ME.about.forEach(p => $("about-text").append(el("p","",p)));
+
+Object.entries(ME.skills).forEach(([k,v]) => { const c = el("div","card"); c.append(el("h3","",k), tags(v)); $("skills-grid").append(c); });
+
+ME.experience.forEach(x => { const li = el("li"); li.append(el("h3","",x.title), el("p","when",x.when), el("p","",x.text)); $("exp").append(li); });
+
+ME.projects.forEach(p => {
+  const c = el("div","card"); c.append(el("h3","",p.title), el("p","",p.text), tags(p.tags));
+  if (p.link) { const a = el("a","", p.tags.includes("Live") ? "Open live site" : "View project"); a.href = p.link; a.target = "_blank"; a.rel = "noopener noreferrer"; a.style.display = "inline-block"; a.style.marginTop = "12px"; c.append(a); }
+  $("proj").append(c);
+});
+
+ME.achievements.forEach(a => { const c = el("div","card"); c.append(el("h3","",a.title), el("p","",a.text)); $("ach").append(c); });
+
+$("contact-text").textContent = ME.contact;
+const mail = el("a","btn","Email me"); mail.href = "mailto:" + ME.email; mail.target = "_blank"; mail.rel = "noopener noreferrer"; $("links").append(mail);
+ME.links.forEach(l => { const a = el("a","btn alt",l.label); a.href = l.href; a.target = "_blank"; a.rel = "noopener noreferrer"; $("links").append(a); });
+const addr = el("p","", ME.email + " "); addr.style.marginTop = "18px";
+const cp = el("button","btn alt","Copy email"); cp.type = "button"; cp.style.cssText = "font:inherit;cursor:pointer;padding:6px 16px;margin-left:6px";
+cp.onclick = () => { const done = () => { cp.textContent = "Copied"; setTimeout(() => cp.textContent = "Copy email", 2000); };
+  if (navigator.clipboard) navigator.clipboard.writeText(ME.email).then(done, () => cp.textContent = "Select and copy above");
+  else cp.textContent = "Select and copy above"; };
+addr.append(cp); $("contact-text").after(addr);
+
+$("foot").textContent = "© " + new Date().getFullYear() + " " + ME.name;
+document.title = ME.name + " | Portfolio";
+</script>
+</body>
+</html>
